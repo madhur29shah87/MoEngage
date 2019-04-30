@@ -15,8 +15,13 @@ body {
 }
 
 #pagination {
+    text-align: center;
     position: relative;
     margin: 20px 0px;
+}
+
+.pagination-content {
+    display: inline-flex !important;
 }
 
 form.example input[type=text] {

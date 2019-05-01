@@ -3,47 +3,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <head>
+    <title>Campaign list</title>
     <link rel="stylesheet" type="text/css" href="moengage.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Campaign list</title>
 
     <script type="text/javascript" src="moengage.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-</script> -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+
+    <!-- ALL BOOTSTRAP an JQUERY imports are just for styling purpose -->
 </head>
 
-<body onload="loadCanpaignList()" class="container">
+<body onload="pageLoadInit()" class="container">
 
-    <h1>Campaign Listing!</h1>
+    <h2>Campaign Listing!</h2>
     <div id="search">
         <form class="example">
-            <input type="text" placeholder="Search..">
+            <input type="text" placeholder="Search.." onkeyup="delaySearch(this)">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
+    <h3 id="searchResult"></h3>
     <div id="campaignList">
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">
+                    <!-- <th scope="col" class="th-heading">
                         <div class="checkbox">
                             <input type="checkbox" value="">
                         </div>
-                    </th>
-                    <th scope="col">Campaign name</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Last saved</th>
-                    <th scope="col" class='align-content-center'>Actions</th>
+                    </th> -->
+                    <!-- commented out as we do not have a scenarion where I can edit multiple comapny at a time -->
+                    <!-- for multuple delete we need to have a seperate delete button which says delete all and disable intividual delete button -->
+                    <!-- hence commenting checkbox. logic can be put around for that well -->
+                    <th scope="col" class="th-heading">Campaign name</th>
+                    <th scope="col" class="th-heading">Type</th>
+                    <th scope="col" class="th-heading">Last saved</th>
+                    <th scope="col" class='th-heading align-content-center'>Actions</th>
                 </tr>
             <tbody id='tBody'>
 
@@ -61,9 +64,10 @@
         </ul>
     </div>
     <!-- The Modal -->
-    <div id="myModal" class="modal">
 
-        <!-- Modal content -->
+
+    <div id="myModal" class="modal">
+        <!-- Modal dialog content -->
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
@@ -73,11 +77,9 @@
                 <input id="editCampaign" class="equilizer" height=40px type="text" placeholder="Campaign name"
                     autofocus>
                 <br>
-                <button class="equilizer">Change</button>
+                <button id="modalButton" class="equilizer">Change</button>
             </div>
-
         </div>
-
     </div>
 </body>
 
